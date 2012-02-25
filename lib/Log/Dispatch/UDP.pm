@@ -84,4 +84,16 @@ so you can easily listen in using netcat.
 
 L<Log::Dispatch>
 
+=begin comment
+
+=over
+
+=item new
+
+=item log_message
+
+=back
+
+=end comment
+
 =cut
