@@ -1,6 +1,5 @@
 use strict;
 use warnings;
-use autodie qw(fork);
 
 use Carp qw(croak);
 use Log::Dispatch;
@@ -19,7 +18,8 @@ Readonly::Scalar my $TIMEOUT        => 2;
 sub perform_udp_listen {
     my ( $callback ) = @_;
 
-    if(my $pid = fork) {
+    my $pid = fork;
+    if($pid) {
         my $sock = IO::Socket::INET->new(
             Proto     => 'udp',
             Type      => SOCK_DGRAM,
@@ -43,12 +43,14 @@ sub perform_udp_listen {
         waitpid $pid, 0;
 
         return $message;
-    } else {
+    } elsif(defined $pid) {
         sleep 1; # give the parent time to establish a listening socket
 
         $callback->();
 
         exit 0;
+    } else {
+        croak $!;
     }
 }
 
