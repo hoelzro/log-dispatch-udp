@@ -46,6 +46,8 @@ sub log_message {
     my $sock    = $self->{'sock'};
 
     $sock->send($message, 0);
+
+    return;
 }
 
 1;
