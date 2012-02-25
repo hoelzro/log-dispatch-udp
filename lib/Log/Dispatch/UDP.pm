@@ -58,7 +58,7 @@ __END__
 
   use Log::Dispatch;
 
-  my log = Log::Dispatch->new(
+  my $log = Log::Dispatch->new(
     outputs => [
         [
             'UDP'

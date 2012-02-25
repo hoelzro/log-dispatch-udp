@@ -12,7 +12,7 @@ version 0.01
 
   use Log::Dispatch;
 
-  my log = Log::Dispatch->new(
+  my $log = Log::Dispatch->new(
     outputs => [
         [
             'UDP'
