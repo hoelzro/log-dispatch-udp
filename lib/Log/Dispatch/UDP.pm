@@ -52,7 +52,7 @@ sub log_message {
 
 __END__
 
-# ABSTRACT:  A short description of Log::Dispatch::UDP
+# ABSTRACT: Log messages to a remote UDP socket
 
 =head1 SYNOPSIS
 
@@ -62,8 +62,9 @@ __END__
     outputs => [
         [
             'UDP'
-            host => $destination_host,
-            port => $destination_port,
+            host      => $destination_host,
+            port      => $destination_port,
+            min_level => 'info',
         ],
     ],
   );
@@ -75,9 +76,7 @@ __END__
 This class can be used to write messages to a UDP socket
 listening on some remote host.  The datagrams themselves
 contain only the messages (there's no real structure to them),
-so you can easily listen in using netcat or something.
-
-=head1 FUNCTIONS
+so you can easily listen in using netcat.
 
 =head1 SEE ALSO
 
